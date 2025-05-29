@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>  
+  <%- include('../includes/navigation.ejs') %>
+  <main>
+    <ul class="checkout-list">
+      <% products.forEach(p => { %>
+        <li class="checkout-item">
+          <p class="item-info"><%= p.title %> (<%= p.cartItem.quantity %>)</p>
+        </li>
+      <% }) %>
+    </ul>
+    <div class="checkout-total">
+      <h2>Total: <%= totalSum %></h2>
+    </div>
+    <div>
+        <button id="order-btn" class="btn">ORDER</button>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+            var stripe = Stripe('pk_test_51RTmHnRwV8Aox8fczUgdTMSMIssFKh5IFBzD07quLF806QrriqMCfMltnfFNn9WLuL4FxDTFEfLDFTGNVuhb8QGW00orqmFkkd');
+            var orderBtn = document.getElementById('order-btn');
+            orderBtn.addEventListener('click', () => {
+                stripe.redirectToCheckout({
+                    sessionId: '<%= sessionId %>'
+                });
+            });
+        </script>
+    </div>
+  </main>
+  <%- include('../includes/end.ejs') %>

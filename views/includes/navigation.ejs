@@ -1,0 +1,28 @@
+<header>
+    <nav>
+        <ul class="hlist">
+            <li class="hitem"><a href="/" class="<%= path === '/'?'active':''%>">Shop</a></li>
+            <li class="hitem"><a href="/products" class="<%= path === '/products'?'active':''%>">Products</a></li>
+            <% if (isAuthenticated) { %>
+                <li class="hitem"><a href="/cart" class="<%= path === '/cart'?'active':''%>">Cart</a></li>
+                <li class="hitem"><a href="/orders" class="<%= path === '/orders'?'active':''%>">Orders</a></li>
+                <li class="hitem"><a href="/admin/add-product" class="<%= path === '/admin/add-product'?'active':''%>">Add Product</a></li>
+                <li class="hitem"><a href="/admin/products" class="<%= path === '/admin/products'?'active':''%>"> Admin Products</a></li>
+            <% } %>
+        </ul>
+        <ul class="hlist">
+            <% if (!isAuthenticated) { %>
+            <li class="hitem"><a href="/login" class="<%= path === '/login'?'active':''%> btn">Login</a></li>
+            <li class="hitem"><a href="/signup" class="<%= path === '/signup'?'active':''%> btn">Sign up</a></li>
+            <% } else { %>
+            <li class="hitem">
+                <span><%= user.email %></span>
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>
