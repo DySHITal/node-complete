@@ -5,7 +5,7 @@ Node Complete es una aplicación web desarrollada con Node.js y Express.js. Util
 ---
 
 ## 🗂 Estructura del Proyecto
-
+```
 node-complete/
 ├── controllers/ # Controladores de las rutas
 ├── data/ # Archivos de datos (por ejemplo, facturas)
@@ -19,7 +19,7 @@ node-complete/
 ├── app.js # Archivo principal de la aplicación
 ├── package.json # Dependencias y scripts
 └── .gitignore # Archivos y carpetas ignorados por Git
-
+```
 
 ---
 
